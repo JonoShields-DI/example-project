@@ -2,13 +2,14 @@ import './App.css';
 
 function App() {
   const get_example = async() => {
-    const response = await fetch('http://localhost:5001/',
+    const response = await fetch('http://localhost:5001/product',
       {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        method: "GET"
+        method: "POST",
+        body: JSON.stringify({ 'name' : 'product1', 'description': 'This is a description'})
       }
     )
     console.log(await response.json());
