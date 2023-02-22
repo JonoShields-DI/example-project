@@ -8,7 +8,20 @@ function App() {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        method: "POST",
+        method: 'GET',
+      }
+    )
+    console.log(await response.json());
+  }
+
+  const post_example = async() => {
+    const response = await fetch('http://localhost:5001/product',
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
         body: JSON.stringify({ 'name' : 'product1', 'description': 'This is a description'})
       }
     )
@@ -16,7 +29,11 @@ function App() {
   }
 
   return (
-    <button onClick={get_example}>GET</button>
+    <>
+      <h1>Test Application</h1>
+      <button onClick={get_example}>GET</button>
+      <button onClick={post_example}>POST</button>
+    </>
   );
 }
 
