@@ -14,13 +14,13 @@ app.get('/test', function(req, res, next) {
 
 app.post('/product', function(req, res, next) {
   const product = req.body;
-  console.log(req.body)
   db.query(`INSERT INTO example ("name", "description") values ($1, $2)`, [product.name, product.description])
-  res.send(201);
+  res.status(201).send(req.body);
 });
 
-app.get('/product', function(req, res, next) {
-  res.json({ title: 'Express' });
+app.get('/product', async function(req, res, next) {
+  const result = await db.query(`SELECT * FROM example`)
+  res.status(200).send(result.rows);
 });
 
 app.listen(5001, () => {
