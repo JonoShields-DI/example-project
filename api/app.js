@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const db = require('./db');
+const port = process.env.API_PORT;
 
 app.use(cors());
 app.use(express.json());
@@ -23,6 +24,6 @@ app.get('/product', async function(req, res, next) {
   res.status(200).send(result.rows);
 });
 
-app.listen(5001, () => {
-  console.log(`Example app listening at http://localhost:${5001}`);
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
 });

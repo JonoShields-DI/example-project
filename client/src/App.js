@@ -1,8 +1,9 @@
 import './App.css';
+const API_URL = process.env.REACT_APP_API_URL
 
 function App() {
   const get_example = async() => {
-    const response = await fetch('http://localhost:5001/product',
+    const response = await fetch(`${API_URL}/product`,
       {
         headers: {
           'Accept': 'application/json',
@@ -15,7 +16,7 @@ function App() {
   }
 
   const post_example = async() => {
-    const response = await fetch('http://localhost:5001/product',
+    const response = await fetch(`${API_URL}/product`,
       {
         headers: {
           'Accept': 'application/json',
